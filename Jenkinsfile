@@ -1,20 +1,46 @@
+// pipeline {
+//     agent any
+
+//     tools {nodejs "nodejs21"}
+
+//     stages {
+//         stage('Dependencies') {
+            
+//             steps {
+//                 sh 'npm i'
+//             }
+//         }
+//         stage('e2e Tests') {
+            
+//             steps {
+//                 sh 'npm run e2e'
+//             }
+//         }
+//     }
+// }
+
+
 pipeline {
     agent any
-
-    tools {nodejs "nodejs21"}
-
+    
     stages {
-        stage('Dependencies') {
-            
+        stage('Build') {
             steps {
-                sh 'npm i'
+                echo 'Building...'
+                `sh 'npm install'`
             }
         }
-        stage('e2e Tests') {
-            
+        stage('Test') {
             steps {
+                echo 'Testing...'
                 sh 'npm run e2e'
             }
         }
+        // stage('Deploy') {
+        //     steps {
+        //         echo 'Deploying...'
+        //         // Place deployment commands here
+        //     }
+        // }
     }
 }
