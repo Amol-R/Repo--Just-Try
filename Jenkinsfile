@@ -58,7 +58,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh
                 bat 'npm run e2e'
             }
         }
