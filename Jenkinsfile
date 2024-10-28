@@ -20,27 +20,52 @@
 // }
 
 
+// pipeline {
+//     agent any
+    
+//     stages {
+//         stage('Build') {
+//             steps {
+//                 echo 'Building...'
+//                sh 'npm install'
+
+//             }
+//         }
+//         stage('Test') {
+//             steps {
+//                 echo 'Testing...'
+//                 sh 'npm run e2e'
+//             }
+//         }
+//         // stage('Deploy') {
+//         //     steps {
+//         //         echo 'Deploying...'
+//         //         // Place deployment commands here
+//         //     }
+//         // }
+//     }
+// }
+
+
 pipeline {
     agent any
-    
     stages {
         stage('Build') {
             steps {
-                echo 'Building...'
-               sh 'npm install'
-
+                bat 'npm install'  // Use 'bat' instead of 'sh' on Windows
             }
         }
         stage('Test') {
             steps {
                 echo 'Testing...'
-                sh 'npm run e2e'
+                sh
+                bat 'npm run e2e'
             }
         }
         // stage('Deploy') {
         //     steps {
         //         echo 'Deploying...'
-        //         // Place deployment commands here
+        //         // Add your deployment commands here
         //     }
         // }
     }
