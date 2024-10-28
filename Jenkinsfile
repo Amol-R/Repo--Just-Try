@@ -53,6 +53,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'npm install'  // Use 'bat' instead of 'sh' on Windows
+                bat 'npx cypress install'
             }
         }
         stage('Test') {
